@@ -15,6 +15,8 @@ namespace Cards.Game
         [SerializeField] private CounterUI _costCounter = default;
         [SerializeField] private CounterUI _hpCounter = default;
 
+        [SerializeField] private GameObject _glowObject;
+
         public void SetData(CardData data)
         {
             _nameText.text = data.Name;
@@ -28,7 +30,7 @@ namespace Cards.Game
 
         public void SetShining(bool active)
         {
-
+            _glowObject.SetActive(active);
         }
 
         private void HandleCardImage(Sprite sprite)

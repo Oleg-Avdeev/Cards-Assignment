@@ -7,8 +7,8 @@ namespace Cards.Game
     {
         public List<Card> Cards => _cards;
 
-        [SerializeField] private float _arcOriginY = -10;
         [SerializeField] private float _arcStepAngle = 15;
+        [SerializeField] private Vector2 _arcSize = default;
         [SerializeField] private CardBuilder _builder = default;
 
         private List<Card> _cards = new List<Card>();
@@ -46,8 +46,8 @@ namespace Cards.Game
             for (int i = 0; i < _cards.Count; i++)
             {
                 var angle = GetArcPosition(i, _cards.Count);
-                var x = -Mathf.Sin(angle * Mathf.PI / 180f) * 4;
-                var y =  Mathf.Cos(angle * Mathf.PI / 180f) * 2;
+                var x = -Mathf.Sin(angle * Mathf.PI / 180f) * _arcSize.x;
+                var y =  Mathf.Cos(angle * Mathf.PI / 180f) * _arcSize.y;
                 _cards[i].SetPosition(x, y, -i, angle);
             }
         }

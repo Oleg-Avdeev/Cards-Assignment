@@ -36,7 +36,7 @@ namespace Cards.Game
 
         public void RemoveCard()
         {
-            _onDropped?.Invoke(this);
+            _onPickedUp?.Invoke(this);
             transform.DOMove(new Vector3(0, -7, 0), 0.4f).OnComplete(Dispose);
         }
 
@@ -48,16 +48,21 @@ namespace Cards.Game
 
         protected override void HandlePickedUp()
         {
+            _cardRenderer.SetShining(true);
             transform.localRotation = Quaternion.identity;
             _onPickedUp?.Invoke(this);
+            base.HandlePickedUp();
         }
 
         protected override void HandleDropped()
         {
+            _cardRenderer.SetShining(false);
             if (!_table.IsHovered())
             {
                 _onDropped?.Invoke(this);
             }
+
+            base.HandleDropped();
         }
 
         private void HandleHPChange(int value)

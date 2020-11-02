@@ -14,7 +14,6 @@ namespace Cards.Game
         public Observable<int> Cost   { get; private set; }
         public Observable<int> HP     { get; private set; }
 
-
         public CardData(string name, string description)
         {
             Name = name;

@@ -15,7 +15,6 @@ namespace Cards.Game
 
         public Card GetRandomCard()
         {
-
             Card card = Instantiate(_cardPrefab);
             card.SetData(GetRandomData());
             card.SetTable(_table);
@@ -29,7 +28,7 @@ namespace Cards.Game
             
             var damage = Random.Range(0, _damageMax);
             var cost = Random.Range(0, _costMax);
-            var hp = Random.Range(0, _hpMax);
+            var hp = Random.Range(1, _hpMax);
             int id = Random.Range(0, 10);
 
             data.Damage.SetValue(damage);

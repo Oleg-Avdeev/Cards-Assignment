@@ -16,25 +16,27 @@ public abstract class DraggableBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _dragging = true;
-        _collider.enabled = false;
-        transform.localScale = Vector3.one * _activeSize;
-
         HandlePickedUp();
     }
 
     private void OnMouseUp()
     {
-        _dragging = false;
-        _collider.enabled = true;
-        transform.localScale = Vector3.one * _iddleSize;
-
         HandleDropped();
     }
 
-    protected abstract void HandlePickedUp();
+    protected virtual void HandlePickedUp()
+    {
+        _dragging = true;
+        _collider.enabled = false;
+        transform.localScale = Vector3.one * _activeSize;
+    }
 
-    protected abstract void HandleDropped();
+    protected virtual void HandleDropped()
+    {
+        _dragging = false;
+        _collider.enabled = true;
+        transform.localScale = Vector3.one * _iddleSize;
+    }
 
     private void Update()
     {
